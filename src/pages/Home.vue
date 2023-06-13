@@ -147,6 +147,10 @@ import Card from 'primevue/card';
         margin: 40px;
         justify-content: space-between;
 
+        .p-card-title {
+            text-decoration: underline 1px #7135A1;
+        }
+
         .page-news {
             display: flex;
             flex-direction: column;
