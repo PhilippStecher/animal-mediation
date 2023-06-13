@@ -134,6 +134,7 @@ import Card from 'primevue/card';
 <style lang="scss">
 .base {
     height: 100%;
+    min-height: calc(100vh - 70px);//- Header height
     display: flex;
     position: relative;
     align-items: center;
