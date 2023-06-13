@@ -25,7 +25,7 @@ import Card from 'primevue/card';
                         </template>
                         <template #footer>
                             <div class="footer-read-more">
-                                <a href="javascript:void(0)">Read more...</a>
+                                <a href="https://crowd-nation.com/">Mehr Informationen</a>
                             </div>
                         </template>
                     </Card>
@@ -66,7 +66,7 @@ import Card from 'primevue/card';
                         </template>
                         <template #footer>
                             <div class="footer-read-more">
-                                <a href="javascript:void(0)">Read more...</a>
+                                <a href="https://crowd-nation.com/">Mehr Informationen</a>
                             </div>
                         </template>
                     </Card>
@@ -99,7 +99,7 @@ import Card from 'primevue/card';
                         </template>
                         <template #footer>
                             <div class="footer-read-more">
-                                <a href="javascript:void(0)">Mehr Informationen</a>
+                                <a href="https://crowd-nation.com/">Mehr Informationen</a>
                             </div>
                         </template>
                     </Card>

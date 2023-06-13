@@ -95,7 +95,7 @@ onMounted(() => {
                             Standort: Mustermann Straße :)
                         </div>
                         <div class="swiper-details">
-                            Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem illum cumque magnam
+                            Beschreibung: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem illum cumque magnam
                             odit et officiis ut perferendis laudantium? Ad quae cum illo esse quam minus vero nobis eveniet
                             cupiditate provident!
                         </div>
