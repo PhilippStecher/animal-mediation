@@ -6,7 +6,7 @@ import Header from "@/components/Header.vue"
 
 const petName = ref('Gustav');
 
-const names = ref(["Luna",
+const names = ref([
     "Luka", "Mio", "Felix",
     "Max", "Moritz", "Abby",
     "Bella", "Daisy", "Ella",
@@ -18,7 +18,31 @@ const names = ref(["Luna",
     "Nino", "Percy", "Rambo",
     "Rufus", "Rusty", "Brutus",
     "Pumpkin", "Sammy", "Simba",
-    "Struppy", "Teddi", "Tucker"]);
+    "Struppy", "Teddi", "Tucker", 
+    "Tigger", "Wiggle", "Leoplurd", 
+    "Brendan", "Maggie", "Buttercup", 
+    "Storm", "Ella", "Nightrunner", 
+    "Benny", "Grinch", "Buckwheat", 
+    "Striper", "Tommy", "SirMeowsAlot", 
+    "Alexi", "Stripe", "Shrapnel", 
+    "Oedipuss", "Lucky", "Waffles", 
+    "Snoop", "Hooch", "Morgan", 
+    "Killer", "Clam", "Trixie", 
+    "Duo", "Pugnacious", "Chairmanmao", 
+    "Felina", "Render", "Henry", 
+    "Willow", "Foster", "Kimba", 
+    "Paws", "Dream", "Sophie", 
+    "Chocolate", "Princess", "ScratchFury", 
+    "Audrey", "Striper", "Sugar", 
+    "Tiny", "Twister", "Sandy", 
+    "Daisy", "Haolie", "Gnawbone", 
+    "WorldDestroyer", "PingPong", 
+    "Hamham", "Harriet", "Skittles", 
+    "Nyrana", "Purrina", "Snookums", 
+    "Buckskin", "Shinx", "Tink", 
+    "Scurry", "Mango", "Zander", 
+    "Sphinx", "Sphinx", "Chino", 
+    "Luna", "Smudge", "Hambert"]);
 const petAge = ref(0);
 const petAges = ref(["Year", "Month", "Week"]);
 const petUrl = ref('https://loremflickr.com/450/800');
