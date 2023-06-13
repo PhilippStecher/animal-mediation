@@ -22,7 +22,7 @@ const routes = [
         }
     },
     {
-        path: '/chat',
+        path: '/chat/:name',
         name: 'chat',
         component: ChatView,
         props: {

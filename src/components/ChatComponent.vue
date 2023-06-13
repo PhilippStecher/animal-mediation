@@ -1,7 +1,7 @@
 <template>
     <div class="chat-container">
         <div class="chat-header">
-            <h2>Mein Chat</h2>
+            <h2>Mein Chat über "{{ chatName }}"</h2>
         </div>
         <div class="chat-messages">
             <div class="message" v-for="message in messages" :key="message.id">
@@ -20,51 +20,59 @@
         </div>
         <div class="chat-input">
             <input type="text" placeholder="Schreibe eine Nachricht..." />
-            <button>
+            <button class="send-button">
                 <i class="pi pi-send"></i>
             </button>
         </div>
     </div>
 </template>
   
-<script>
-export default {
-    data() {
-        return {
-            messages: [
-                {
-                    id: 1,
-                    sender: "Ich",
-                    time: new Date(Date.now() - 600000),
-                    text: "Hallo, wie geht es dir?",
-                },
-                {
-                    id: 2,
-                    sender: "Benutzer2",
-                    time: new Date(Date.now() - 300000),
-                    text: "Mir geht es gut, danke!",
-                },
-                {
-                    id: 3,
-                    sender: "Ich",
-                    time: new Date(Date.now()),
-                    text: "Das freut mich zu hören!",
-                },
-            ],
-        };
+<script setup>
+import { ref, computed } from 'vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+const chatName = route.params.name;
+console.log(`Chat mit ${chatName}`);
+
+const messages = ref([
+    {
+        id: 1,
+        sender: "Ich",
+        time: new Date(Date.now() - 600000),
+        text: "Hallo, wie geht es Ihnen? Ich habe den " + chatName + " gesehen und mich sofort verliebt!",
     },
-    methods: {
-        getTimeStamp(time) {
-            const date = new Date(time);
-            const hours = this.addLeadingZero(date.getHours());
-            const minutes = this.addLeadingZero(date.getMinutes());
-            return `${hours}:${minutes}`;
-        },
-        addLeadingZero(value) {
-            return value < 10 ? `0${value}` : value;
-        },
+    {
+        id: 2,
+        sender: "Tierheim",
+        time: new Date(Date.now() - 300000),
+        text: "Mir geht es gut, danke! Ja "  + chatName + " ist echt süß. Wie wäre es, wenn wir einen Termin vereinbaren!",
     },
+    {
+        id: 3,
+        sender: "Ich",
+        time: new Date(Date.now()),
+        text: "Das freut mich zu hören! Hört sich super an, wann denn?",
+    },
+]);
+
+const getTimeStamp = (time) => {
+    const date = new Date(time);
+    const hours = addLeadingZero(date.getHours());
+    const minutes = addLeadingZero(date.getMinutes());
+    return `${hours}:${minutes}`;
 };
+
+const addLeadingZero = (value) => {
+    return value < 10 ? `0${value}` : value;
+};
+
+const formattedMessages = computed(() => {
+    return messages.value.map((message) => ({
+        ...message,
+        time: getTimeStamp(message.time),
+    }));
+});
 </script>
   
 <style scoped>
@@ -73,7 +81,7 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    height: 100vh;
+    height: 80vh;
     padding: 20px;
     background-color: #f7f8fa;
 }
@@ -87,6 +95,7 @@ export default {
 }
 
 .chat-header h2 {
+    font-family: "NovaBold";
     color: #7135a1;
 }
 
@@ -182,12 +191,14 @@ export default {
 }
 
 .chat-input button {
-    background-color: transparent;
+    background-color: #008080;
     border: none;
     outline: none;
     cursor: pointer;
     margin-left: 10px;
     font-size: 20px;
-    color: #7135a1;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 4px;
 }
 </style>

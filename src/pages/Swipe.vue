@@ -109,7 +109,7 @@ onMounted(() => {
             <div class="swiper-reactions">
                 <Button @click="generatePet()" class="reaction-button" icon="pi pi-check" severity="success" rounded
                     aria-label="Smash" />
-                <Button @click="router.push('/chat?' + petName)" icon="pi pi-comment" class="reaction-button"
+                <Button @click="router.push('/chat/' + petName)" icon="pi pi-comment" class="reaction-button"
                     severity="help" rounded aria-label="Message" />
                 <Button @click="generatePet()" class="reaction-button" icon="pi pi-times" severity="danger" rounded
                     aria-label="Pass" />

@@ -1,8 +1,9 @@
 <script setup>
 import { ref, computed } from 'vue'
 import router from '../router/index'
+import { useRoute } from 'vue-router';
 
-const activeRoute = ref(router.getRoutes().filter(route => route.path == router.currentRoute.value.path)[0]);
+const activeRoute = useRoute();
 </script>
 
 <template>
