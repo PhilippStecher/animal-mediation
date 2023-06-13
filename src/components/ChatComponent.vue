@@ -5,23 +5,25 @@
                 <h2>Mein Chat über "{{ chatName }}"</h2>
             </div>
             <div class="chat-messages">
-                <div class="message" v-for="message in messages" :key="message.id">
-                    <div class="avatar"
-                        :class="{ 'sender-avatar': message.sender === 'Ich', 'receiver-avatar': message.sender !== 'Ich' }">
+                <div class="message" v-for="message in formattedMessages" :key="message.id">
+                    <div class="avatar" :class="{
+                        'sender-avatar': message.sender === 'Ich',
+                        'receiver-avatar': message.sender !== 'Ich'
+                    }">
                         <i class="pi pi-user"></i>
                     </div>
                     <div class="message-content">
                         <div class="message-header">
                             <span class="message-sender">{{ message.sender }}</span>
-                            <span class="message-time">{{ getTimeStamp(message.time) }}</span>
+                            <span class="message-time">{{ message.time }}</span>
                         </div>
                         <div class="message-text">{{ message.text }}</div>
                     </div>
                 </div>
             </div>
             <div class="chat-input">
-                <input type="text" placeholder="Schreibe eine Nachricht..." />
-                <button class="send-button">
+                <input type="text" placeholder="Schreibe eine Nachricht..." v-model="newMessage" @keyup.enter="sendMessage" />
+                <button class="send-button" @click="sendMessage">
                     <i class="pi pi-send"></i>
                 </button>
             </div>
@@ -78,6 +80,20 @@ const getTimeStamp = (time) => {
 
 const addLeadingZero = (value) => {
     return value < 10 ? `0${value}` : value;
+};
+
+const newMessage = ref("");
+
+const sendMessage = () => {
+    const timestamp = new Date();
+    const formattedTimestamp = getTimeStamp(timestamp);
+    messages.value.push({
+        id: messages.value.length + 1,
+        sender: "Ich",
+        time: timestamp,
+        text: newMessage.value,
+    });
+    newMessage.value = "";
 };
 
 const formattedMessages = computed(() => {
