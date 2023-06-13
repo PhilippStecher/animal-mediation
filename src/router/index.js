@@ -8,22 +8,33 @@ const routes = [
     {
         path: '/',
         name: 'home',
-        component: HomeView
+        component: HomeView,
+        props: {
+            headerText: 'Home',
+        }
     },
     {
         path: '/swipe',
         name: 'swipe',
-        component: SwipeView
+        component: SwipeView,
+        props: {
+            headerText: 'Swipe',
+        }
     },
     {
         path: '/chat',
         name: 'chat',
-        component: ChatView
+        component: ChatView,
+        props: {
+            headerText: 'Chat',
+        }
     },
     {
         path: '/:pathMatch(.*)*',
         name: '404',
-        component: Error404
+        component: Error404,
+        props: {
+        }
     }
 ]
 
