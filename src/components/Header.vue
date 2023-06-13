@@ -1,9 +1,21 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import router from '../router/index'
 import { useRoute } from 'vue-router';
 
-const activeRoute = useRoute();
+const props = defineProps({
+    currentRoute: String
+})
+
+const orderedRoutes = computed(() => {
+    const routes = router.getRoutes()
+
+    const orderedRoutes = ['home', 'swipe', 'chat'].map((name) => {
+        return routes.find((route) => route.name === name);
+    });
+
+    return orderedRoutes;
+});
 </script>
 
 <template>
@@ -14,9 +26,10 @@ const activeRoute = useRoute();
                 <div class="title">Haustier Tinder</div>
             </div>
             <div class="nav-list">
-                <template v-for="route in router.getRoutes()">
+                <template v-for="route in orderedRoutes">
                     <template v-if="route.props.default.hasOwnProperty('headerText')">
-                        <router-link :to="route.path" class="nav-entry" :class="{active: route.name == activeRoute.name }"  >
+                        <router-link :to="route.path.replace(/:[a-zA-Z0-9]{0,}/, '')" class="nav-entry"
+                            :class="{ active: route.name == props.currentRoute }">
                             {{ route.props.default.headerText }}
                         </router-link>
                     </template>

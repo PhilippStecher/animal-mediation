@@ -22,12 +22,22 @@ const routes = [
         }
     },
     {
-        path: '/chat/:name',
+        path: '/chat',
         name: 'chat',
         component: ChatView,
         props: {
             headerText: 'Chat',
-        }
+        },
+        children: [
+            {
+                path: '',
+                component: ChatView
+            },
+            {
+                path: ':name',
+                component: ChatView
+            }
+        ]
     },
     {
         path: '/:pathMatch(.*)*',

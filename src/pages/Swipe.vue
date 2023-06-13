@@ -78,7 +78,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <Header></Header>
+    <Header currentRoute="swipe"></Header>
     <div class="base">
         <div class="container swiper">
             <div class="swiper-panel">

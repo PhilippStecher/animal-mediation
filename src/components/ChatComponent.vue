@@ -1,29 +1,42 @@
 <template>
     <div class="chat-container">
-        <div class="chat-header">
-            <h2>Mein Chat über "{{ chatName }}"</h2>
-        </div>
-        <div class="chat-messages">
-            <div class="message" v-for="message in messages" :key="message.id">
-                <div class="avatar"
-                    :class="{ 'sender-avatar': message.sender === 'Ich', 'receiver-avatar': message.sender !== 'Ich' }">
-                    <i class="pi pi-user"></i>
-                </div>
-                <div class="message-content">
-                    <div class="message-header">
-                        <span class="message-sender">{{ message.sender }}</span>
-                        <span class="message-time">{{ getTimeStamp(message.time) }}</span>
+        <template v-if="chatName">
+            <div class="chat-header">
+                <h2>Mein Chat über "{{ chatName }}"</h2>
+            </div>
+            <div class="chat-messages">
+                <div class="message" v-for="message in messages" :key="message.id">
+                    <div class="avatar"
+                        :class="{ 'sender-avatar': message.sender === 'Ich', 'receiver-avatar': message.sender !== 'Ich' }">
+                        <i class="pi pi-user"></i>
                     </div>
-                    <div class="message-text">{{ message.text }}</div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="message-sender">{{ message.sender }}</span>
+                            <span class="message-time">{{ getTimeStamp(message.time) }}</span>
+                        </div>
+                        <div class="message-text">{{ message.text }}</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="chat-input">
-            <input type="text" placeholder="Schreibe eine Nachricht..." />
-            <button class="send-button">
-                <i class="pi pi-send"></i>
-            </button>
-        </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Schreibe eine Nachricht..." />
+                <button class="send-button">
+                    <i class="pi pi-send"></i>
+                </button>
+            </div>
+        </template>
+        <template v-else>
+            <h2 class="no-requests-heading">Noch keine Anfragen</h2>
+            <div class="chat-instructions">
+                <p class="instruction-text">
+                    Swipen Sie zuerst nach rechts und wählen Sie ein Tier aus, um einen Chat zu starten.
+                </p>
+                <p class="instruction-text">
+                    Sobald Sie ein Tier ausgewählt haben, können Sie einen Chat mit dem Tierheim des Tiers beginnen.
+                </p>
+            </div>
+        </template>
     </div>
 </template>
   
@@ -46,7 +59,7 @@ const messages = ref([
         id: 2,
         sender: "Tierheim",
         time: new Date(Date.now() - 300000),
-        text: "Mir geht es gut, danke! Ja "  + chatName + " ist echt süß. Wie wäre es, wenn wir einen Termin vereinbaren!",
+        text: "Mir geht es gut, danke! Ja " + chatName + " ist echt süß. Wie wäre es, wenn wir einen Termin vereinbaren!",
     },
     {
         id: 3,
@@ -200,5 +213,26 @@ const formattedMessages = computed(() => {
     color: #fff;
     padding: 6px 10px;
     border-radius: 4px;
+}
+
+.no-requests-heading {
+    font-family: "NovaBold";
+    font-size: 40px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 5px;
+}
+
+.chat-instructions {
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.instruction-text {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+    padding-bottom: 10px;
 }
 </style>

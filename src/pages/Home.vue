@@ -6,7 +6,7 @@ import Card from 'primevue/card';
 </script>
 
 <template>
-    <Header></Header>
+    <Header currentRoute="home"></Header>
     <div class="base">
         <div class="container page-content">
             <div class="page-news">

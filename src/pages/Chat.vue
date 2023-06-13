@@ -4,7 +4,7 @@ import Chat from "@/components/ChatComponent.vue"
 </script>
 
 <template>
-    <Header></Header>
+    <Header currentRoute="chat"></Header>
     <Chat></Chat>
 </template>
 
